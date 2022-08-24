@@ -1,0 +1,120 @@
+[System.Serializable]
+public class AccountBlockedException : System.Exception
+{
+    private static readonly string DefaultMessage = "The transaction cannot be performed on a blocked account";
+
+    public string AccountName { get; set; }
+    public string TransactionType { get; set; }
+
+    public AccountBlockedException() : base(DefaultMessage) { }
+    public AccountBlockedException(string message) : base(message) { }
+    public AccountBlockedException(string message, System.Exception innerException)
+    : base(message, innerException) { }
+
+    public AccountBlockedException(string accountName, string transactionType)
+    : base(DefaultMessage) {
+        AccountName = accountName;
+        TransactionType = transactionType;
+    }
+
+    public AccountBlockedException(string accountName, string transactionType, System.Exception innerException)
+    : base(DefaultMessage, innerException) {
+        AccountName = accountName;
+        TransactionType = transactionType;
+    }
+
+    public AccountBlockedException(string accountName, string transactionType, string message)
+    : base(message) {
+        AccountName = accountName;
+        TransactionType = transactionType;
+    }
+
+    public AccountBlockedException(string accountName, string transactionType, string message, System.Exception innerException)
+    : base(message, innerException) {
+        AccountName = accountName;
+        TransactionType = transactionType;
+    }
+
+    protected AccountBlockedException(
+        System.Runtime.Serialization.SerializationInfo info,
+        System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+
+}
+
+class Account
+{
+    public Account(string name, int balance)
+    {
+        Name = name;
+        Balance = balance;
+    }
+    public string Name { get; private set; }
+    public int Balance { get; private set; }
+    public bool IsBlocked { get; set; }
+
+    public void Credit(int amount)
+    {
+        if (IsBlocked)
+        {
+            throw new AccountBlockedException(Name, "Credit");
+        }
+        Balance = amount + Balance;
+    }
+
+    public void Debit(int amount)
+    {
+        if (IsBlocked)
+        {
+            throw new AccountBlockedException(Name, "Debit");
+        }
+        Balance = Balance - amount;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            var accountToDebit = new Account("Francis John", 900);
+            var accountToCredit = new Account("Francisca Grey", 900);
+            BlockAccount(accountToCredit);
+            TransferFund(200, accountToDebit, accountToCredit);
+        }
+        catch (AccountBlockedException ex)
+        {
+            Console.WriteLine("Oh no! Something went wrong");
+            Console.WriteLine(ex.Message);
+            Console.WriteLine("Account name: {0}", ex.AccountName);
+            Console.WriteLine("Transaction type: {0}", ex.TransactionType);
+        }
+    }
+
+    static void BlockAccount(Account account)
+    {
+        account.IsBlocked = true;
+    }
+
+    static void TransferFund(int amount, Account accountToDebit, Account accountToCredit)
+    {
+        Console.WriteLine("Initiating transaction");
+        Console.WriteLine("Will debit account {0} for the sum of {1}... \n", accountToDebit.Name, accountToDebit.Balance);
+        accountToDebit.Debit(amount);
+        Console.WriteLine("Will credit account {0} for the sum of {1}... \n", accountToDebit.Name, accountToDebit.Balance);
+        accountToCredit.Credit(amount);
+        Console.WriteLine("Transfer fund transaction completed");
+    }
+}
+
+haslnya 
+
+Initiating transaction
+Will debit account Francis John for the sum of 900...
+
+Will credit account Francis John for the sum of 700...
+
+Oh no! Something went wrong
+The transaction cannot be performed on a blocked account
+Account name: Francisca Grey
+Transaction type: Credit

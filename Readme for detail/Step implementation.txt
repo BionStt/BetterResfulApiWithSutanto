@@ -1,0 +1,14 @@
+1. create folder solution
+        dotnet new sln -o BetterResfulApiWithSutanto
+2. create project inside folder solution
+        dotnet new webapi -o WebApi 
+3. test run f5 => should run without error. 
+
+4. add libraries to be used in the project . ctrl+shift+p (open command pallete, search nuget and open it to install libraries)
+        Microsoft.EntityFrameworkCore.Tools
+         Microsoft.EntityFrameworkCore.SQlServer
+         Microsoft.EntityFrameworkCore.Design
+         Microsoft.EntityFrameworkCore.Relational
+
+5. setting openApi Documentation(swagger) for this project https://code-maze.com/swagger-ui-asp-net-core-web-api/
+

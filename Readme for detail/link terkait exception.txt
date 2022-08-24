@@ -1,0 +1,17 @@
+
+https://volaresoftware.com/en/technical-posts/stop-wasting-time-with-enums-in-c
+https://www.tutorialsteacher.com/webapi/action-method-return-type-in-web-api
+
+https://www.devtrends.co.uk/blog/handling-errors-in-asp.net-core-web-api
+https://www.endpointdev.com/blog/2021/07/dotnet-5-web-api/
+
+https://enterprisecraftsmanship.com/posts/rest-api-response-codes-400-vs-500/
+https://enterprisecraftsmanship.com/posts/functional-c-handling-failures-input-errors/
+https://enterprisecraftsmanship.com/posts/exceptions-for-flow-control/
+https://enterprisecraftsmanship.com/posts/custom-exception-types/
+
+
+https://vrentzos.com/exceptions-the-right-way/
+https://www.codementor.io/@j2jensen/exceptions-in-c-done-right-aieyu2jhp
+
+https://www.pluralsight.com/guides/understanding-defining-using-custom-exception
