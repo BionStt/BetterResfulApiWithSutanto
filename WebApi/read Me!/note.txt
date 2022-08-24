@@ -1,1 +1,3 @@
 ﻿https://exceptionnotfound.net/the-repository-service-pattern-with-dependency-injection-and-asp-net-core/
+
+https://mentormate.com/blog/service-and-repository-layer-interaction-in-c/
