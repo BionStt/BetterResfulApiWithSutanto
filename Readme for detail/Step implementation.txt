@@ -9,6 +9,6 @@
          Microsoft.EntityFrameworkCore.SQlServer
          Microsoft.EntityFrameworkCore.Design
          Microsoft.EntityFrameworkCore.Relational
-
+        install-package FluentValidation
 5. setting openApi Documentation(swagger) for this project https://code-maze.com/swagger-ui-asp-net-core-web-api/
 

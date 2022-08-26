@@ -1,0 +1,68 @@
+https://www.codemag.com/article/1603031/Handling-Exceptions-Returned-from-the-Web-API
+
+function productList() {
+    $.ajax({
+        url: '/api/Product/',
+        type: 'GET',
+        dataType: 'json',
+        success: function (products) {
+            productListSuccess(products);
+        },
+        error: function (request, message, error) {
+            handleException(request, message, error);
+        }
+    });
+}
+
+function handleException(request, message, error) {
+    var msg = "";
+
+    msg += "Code: " + request.status + "\n";
+    msg += "Text: " + request.statusText + "\n";
+    if (request.responseJSON != null) {
+        msg += "Message: " +
+        request.responseJSON.Message + "\n";
+    }
+
+    alert(msg);
+}
+
+function handleException(request, message, error) {
+var msg = "";
+
+  switch (request.status) {
+    case 500:
+        // Display error message thrown from the server
+        msg = request.responseJSON.ExceptionMessage;
+        break;
+
+    case 400:
+    // 'Bad Request' means we are throwing back
+    // model state errors
+    var errors = [];
+
+    errors = getModelStateErrors(request.responseText);
+
+    for (var i = 0; i < errors.length; i++) {
+        msg += errors[i] + "\n";
+    }
+
+    break;
+
+    case 404:
+    // 'Not Found' means the data you are requesting
+    //  cannot be found in the database
+
+    msg = "The Product you were requesting could not be found";
+
+    break;
+
+    default:
+        msg = "Status: " + request.status;
+        msg += "\n" + "Error Message: " + 
+            request.statusText;    
+        break;
+  }
+
+  alert(msg);
+}

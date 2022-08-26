@@ -6,3 +6,11 @@ https://hamidmosalla.com/2018/02/28/net-exception-best-practices/
 https://www.c-sharpcorner.com/article/create-a-minimal-web-api-with-asp-net-core-and-publish-it-to-azure-api-managemen/
 https://blog.kloud.com.au/2017/08/13/swashbuckle-pro-tips-for-aspnet-web-api-part-2/
 https://www.c-sharpcorner.com/article/asynchronous-communication-between-microservices-using-net-core-api-rabbitmq/
+
+https://restfulapi.net/http-status-codes/
+https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+
+https://docs.telerik.com/data-access/deprecated/developers-guide/using-web-services/asp.net-web-api/developer-guide-web-services-web-api-exception-handling
+https://codingsonata.com/exception-handling-and-logging-in-asp-net-core-web-api/
+
+https://josef.codes/my-take-on-the-result-class-in-c-sharp/
