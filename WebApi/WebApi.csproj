@@ -30,4 +30,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SalesMarketing\Domain\EnumInEntity\" />
+    <Folder Include="SalesMarketing\Domain\ValueObjects\" />
+    <Folder Include="SalesMarketing\DTO\" />
+    <Folder Include="SalesMarketing\DTOMapping\" />
+    <Folder Include="SalesMarketing\Infrastructure\Context\" />
+    <Folder Include="SalesMarketing\Infrastructure\Configuration\" />
+    <Folder Include="SalesMarketing\Infrastructure\Migrations\" />
+  </ItemGroup>
+
 </Project>
