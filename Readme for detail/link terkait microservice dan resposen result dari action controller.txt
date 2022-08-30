@@ -1,0 +1,5 @@
+[09.39, 30/8/2022] Tanto: https://exceptionnotfound.net/asp-net-core-demystified-action-results/
+[09.44, 30/8/2022] Tanto: https://hamidmosalla.com/2017/03/29/asp-net-core-action-results-explained/
+[09.45, 30/8/2022] Tanto: https://www.c-sharpcorner.com/article/action-result-in-asp-net-core-api/
+[09.49, 30/8/2022] Tanto: https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/
+[09.50, 30/8/2022] Tanto: https://dotnettutorials.net/lesson/microservices-using-asp-net-core/
