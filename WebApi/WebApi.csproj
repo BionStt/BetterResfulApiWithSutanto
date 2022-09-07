@@ -34,7 +34,6 @@
     <Folder Include="SalesMarketing\DTO\" />
     <Folder Include="SalesMarketing\DTOMapping\" />
     <Folder Include="SalesMarketing\Infrastructure\Context\" />
-    <Folder Include="SalesMarketing\Infrastructure\Configuration\" />
     <Folder Include="SalesMarketing\Infrastructure\Migrations\" />
   </ItemGroup>
 
