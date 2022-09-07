@@ -16,6 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SalesMarketing\Infrastructure\Context\0ru1acly.r4d~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
@@ -33,7 +39,6 @@
   <ItemGroup>
     <Folder Include="SalesMarketing\DTO\" />
     <Folder Include="SalesMarketing\DTOMapping\" />
-    <Folder Include="SalesMarketing\Infrastructure\Context\" />
     <Folder Include="SalesMarketing\Infrastructure\Migrations\" />
   </ItemGroup>
 

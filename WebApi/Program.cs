@@ -1,9 +1,11 @@
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using WebApi.SalesMarketing;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSalesMarketing(builder.Configuration.GetConnectionString("BlazorIdentityConnection")); // perlu diganti connection stringnya
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
