@@ -1,0 +1,9 @@
+﻿idealnya exception utk client error itu 400 dan klo server error itu 500
+
+response code error (400 atau 500)
+
+404 = > notfound 
+
+
+ throw new InvalidNameStateException => perintah ini ketika eksekusi akan langsung berhenti pada titik ini. alias perintah berikut tidak dieksekusi tp langsung balik ke user berikut pesan errornya.
+

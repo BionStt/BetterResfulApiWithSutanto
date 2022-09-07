@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SalesMarketing\Domain\ValueObjects\" />
     <Folder Include="SalesMarketing\DTO\" />
     <Folder Include="SalesMarketing\DTOMapping\" />
     <Folder Include="SalesMarketing\Infrastructure\Context\" />
