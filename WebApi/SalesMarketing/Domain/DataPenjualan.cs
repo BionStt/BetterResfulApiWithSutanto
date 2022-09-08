@@ -69,11 +69,12 @@ namespace WebApi.SalesMarketing.Domain
         private readonly List<DataPenjualanDetail> _dataPenjualanDetails = new List<DataPenjualanDetail>();
         public IReadOnlyCollection<DataPenjualanDetail> DataPenjualanDetails => _dataPenjualanDetails.AsReadOnly();
 
-        public DataPenjualanDetail AddDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah, string userName, Guid userNameId)
+        //public DataPenjualanDetail AddDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah, string userName, Guid userNameId)
+        public void AddDataPenjualanDetail(DataPenjualanDetail DataPenjualanDetail1)
         {
-            var dtPenjualanDetail = DataPenjualanDetail.CreateDataPenjualanDetail(dataPenjualanId, stokUnitId, offTheRoad, bBN, hargaOTR, uangMuka, diskonKredit, diskonTunai, subsidi, promosi, komisi, joinPromo1, joinPromo2, sPF, sellOut, dendaWilayah, userNameId, userName);
-            _dataPenjualanDetails.Add(dtPenjualanDetail);
-            return dtPenjualanDetail;
+          //  var dtPenjualanDetail = DataPenjualanDetail.CreateDataPenjualanDetail(dataPenjualanId, stokUnitId, offTheRoad, bBN, hargaOTR, uangMuka, diskonKredit, diskonTunai, subsidi, promosi, komisi, joinPromo1, joinPromo2, sPF, sellOut, dendaWilayah, userNameId, userName);
+            _dataPenjualanDetails.Add(DataPenjualanDetail1);
+          //  return dtPenjualanDetail;
         }
 
         public DataPenjualanDetail EditDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah, Guid dataPenjualanDetailId)

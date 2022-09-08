@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,18 +49,18 @@ namespace WebApi.SalesMarketing.Domain
             return NoRegistrasiSPK;
 
         }
-        private string GenerateId(int travelerId, DateTime firstNight, DateTime lastNight, DateTime booked)
-        {
-            return string.Format(
-                "{0}-{1}-{2}-{3}",
-                travelerId, ToIdFormat(firstNight), ToIdFormat(lastNight), ToIdFormat(booked)
-            );
-        }
+        //private string GenerateId(int travelerId, DateTime firstNight, DateTime lastNight, DateTime booked)
+        //{
+        //    return string.Format(
+        //        "{0}-{1}-{2}-{3}",
+        //        travelerId, ToIdFormat(firstNight), ToIdFormat(lastNight), ToIdFormat(booked)
+        //    );
+        //}
 
-        private string ToIdFormat(DateTime date)
-        {
-            return date.ToString("yyyy/MM/dd");
-        }
+        //private string ToIdFormat(DateTime date)
+        //{
+        //    return date.ToString("yyyy/MM/dd");
+        //}
 
         protected DataSPK()
         {
@@ -81,27 +82,29 @@ namespace WebApi.SalesMarketing.Domain
         private readonly List<DataSPKSurvei> _dataSPKSurvei = new List<DataSPKSurvei>();
         public IReadOnlyCollection<DataSPKSurvei> DataSPKSurvei => _dataSPKSurvei.AsReadOnly();
 
-        public DataSPKSurvei AddDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid DataSpkId)
+       // public void AddDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid DataSpkId)
+        public void AddDataSPKSurvei(DataSPKSurvei DataSPKSurvei1)
         {
-            var DtSPKSurvei = Domain.DataSPKSurvei.CreateDataSPKSurvei(noKTPPemesan, namaPemesan, alamatPemesan, dataNPWPPemesan, pekerjaanPemesan, DataSpkId);
-            _dataSPKSurvei.Add(DtSPKSurvei);
-            return DtSPKSurvei;
+           // var DtSPKSurvei = Domain.DataSPKSurvei.CreateDataSPKSurvei(noKTPPemesan, namaPemesan, alamatPemesan, dataNPWPPemesan, pekerjaanPemesan, DataSpkId);
+            _dataSPKSurvei.Add(DataSPKSurvei1);
+           // return DtSPKSurvei;
         }
-        public DataSPKSurvei EditDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid DataSpkSurveiId)
+        public void EditDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid DataSpkSurveiId)
         {
             var dataSPKSurvei = _dataSPKSurvei.FirstOrDefault(i => i.DataSPKSurveiId == DataSpkSurveiId);
             dataSPKSurvei.EditDataSPKSurvei(noKTPPemesan, namaPemesan, alamatPemesan, dataNPWPPemesan, pekerjaanPemesan);
-            return dataSPKSurvei;
+           // return dataSPKSurvei;
         }
 
         private readonly List<DataSPKLeasing> _dataSpkLeasing = new List<DataSPKLeasing>();
         public IReadOnlyCollection<DataSPKLeasing> DataSPKLeasing => _dataSpkLeasing.AsReadOnly();
 
-        public DataSPKLeasing AddDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei, Guid DataSpkId)
+       // public void AddDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei, Guid DataSpkId)
+        public void AddDataSPKLeasing(DataSPKLeasing DataSPKLeasing1)
         {
-            var dataSpkLeasing = Domain.DataSPKLeasing.CreateDataSPKLeasing(angsuran, mediator, namaCmo, namaSales, tenor, tanggalSurvei, DataSpkId);
-            _dataSpkLeasing.Add(dataSpkLeasing);
-            return dataSpkLeasing;
+            //var dataSpkLeasing = Domain.DataSPKLeasing.CreateDataSPKLeasing(angsuran, mediator, namaCmo, namaSales, tenor, tanggalSurvei, DataSpkId);
+            _dataSpkLeasing.Add(DataSPKLeasing1);
+           // return dataSpkLeasing;
         }
         public DataSPKLeasing EditDataSpkLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei, Guid DataSPKLEasingId)
         {
@@ -112,18 +115,32 @@ namespace WebApi.SalesMarketing.Domain
 
         private readonly List<DataSPKKredit> _dataSpkKredit = new List<DataSPKKredit>();
         public IReadOnlyCollection<DataSPKKredit> DataSPKKredit => _dataSpkKredit.AsReadOnly();
-        public DataSPKKredit AddDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, string userName, Guid userNameId)
+      
+        //public void AddDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, string userName, Guid userNameId)
+        public void AddDataSPKKredit(DataSPKKredit DataSPKKredit1)
         {
-            var dataSPKKredit = Domain.DataSPKKredit.CreateDataSPKKredit(biayaAdministrasiKredit, biayaAdministrasiTunai, bBN, dendaWilayah, diskonDP, diskonTunai, dPPriceList, komisi, offTheRoad, promosi, uangTandaJadiTunai, uangTandaJadiKredit, DataSPKId, userName, userNameId);
-            _dataSpkKredit.Add(dataSPKKredit);
-            return dataSPKKredit;
+           //var dataSPKKredit = Domain.DataSPKKredit.CreateDataSPKKredit(biayaAdministrasiKredit, biayaAdministrasiTunai, bBN, dendaWilayah, diskonDP, diskonTunai, dPPriceList, komisi, offTheRoad, promosi, uangTandaJadiTunai, uangTandaJadiKredit, DataSPKId, userName, userNameId);
+            _dataSpkKredit.Add(DataSPKKredit1);
+           // return dataSPKKredit;
         }
-        public DataSPKKredit EditDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid DataSpkKreditId)
+        public void EditDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid DataSpkKreditId)
         {
             var dataspkKredit = _dataSpkKredit.FirstOrDefault(i => i.DataSPKKreditId == DataSpkKreditId);
             dataspkKredit.EditDataSPKKredit(biayaAdministrasiKredit, biayaAdministrasiTunai, bBN, dendaWilayah, diskonDP, diskonTunai, dPPriceList, komisi, offTheRoad, promosi, uangTandaJadiTunai, uangTandaJadiKredit);
-            return dataspkKredit;
+          //  return dataspkKredit;
 
         }
+
+        private readonly List<DataSPKKendaraan> _dataSPKKendaraan = new List<DataSPKKendaraan>();
+        public IReadOnlyCollection<DataSPKKendaraan> DataSPKKendaraan => _dataSPKKendaraan.AsReadOnly();
+
+       // public void AddDataSPKKendaraan(string TahunPerakitan,string Warna,string NamaSTNK,string NoKTPSTNK, Guid MasterBarangIdGuid, Guid dtSPKId,string UserName,Guid UserNameId)
+        public void AddDataSPKKendaraan(DataSPKKendaraan DataSPKKendaraan1)
+        {
+          //  var dataSpkKendaraan = Domain.DataSPKKendaraan.CreateDataSPKKendaraan(TahunPerakitan, Warna, NamaSTNK, NoKTPSTNK, MasterBarangIdGuid, dtSPKId, UserName, UserNameId);
+            _dataSPKKendaraan.Add(DataSPKKendaraan1);
+           // return dataSpkKendaraan;
+        }
+
     }
 }
