@@ -37,6 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="SalesMarketing\ServiceApplication\PermohonanBPKB\DTO\" />
+    <Folder Include="SalesMarketing\ServiceApplication\PermohonanBPKB\Queries\" />
     <Folder Include="SalesMarketing\ServiceApplication\PermohonanFaktur\DTO\" />
     <Folder Include="SalesMarketing\ServiceApplication\PermohonanFaktur\Queries\" />
     <Folder Include="SalesMarketing\ServiceApplication\DTOMapping\" />

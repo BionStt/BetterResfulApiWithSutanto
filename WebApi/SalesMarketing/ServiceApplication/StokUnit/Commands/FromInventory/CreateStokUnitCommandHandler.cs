@@ -1,0 +1,32 @@
+﻿using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WebApi.SalesMarketing.Infrastructure.Context;
+
+namespace WebApi.SalesMarketing.ServiceApplication.StokUnit.Commands.FromInventory
+{
+    public class CreateStokUnitCommandHandler : IRequestHandler<CreateStokUnitCommand>
+    {
+        private readonly SalesMarketingContext _dbContext;
+
+        public CreateStokUnitCommandHandler(SalesMarketingContext context)
+        {
+            _dbContext = context;
+        }
+
+        public async Task<Unit> Handle(CreateStokUnitCommand request, CancellationToken cancellationToken)
+        {
+            var DtStokUnit = Domain.StokUnit.CreateStokUnit(request.StokUnitId, request.MasterBarangId, request.NomorRangka, request.NomorMesin, request.NamaSupplier, request.Warna);
+
+            await _dbContext.StokUnit.AddAsync(DtStokUnit);
+            await _dbContext.SaveChangesAsync();
+
+            return Unit.Value;
+
+
+        }
+    }
+}
