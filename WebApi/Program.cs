@@ -1,5 +1,7 @@
 using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using WebApi.SalesMarketing;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,8 +37,15 @@ builder.Services.AddSwaggerGen(c =>
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         c.IncludeXmlComments(xmlPath);
-   // c.ExampleFilters(); // add this to support examples
+    c.ExampleFilters(); // add this to support examples
 });
+
+
+//builder.Services.AddSwaggerExamplesFromAssemblyOf<Startup>(); // to automatically search all the example from assembly.
+
+builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,7 +54,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
+        //c.DocumentTitle = "Address API - Swagger docs";
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        //c.EnableDeepLinking();
+        //c.DefaultModelsExpandDepth(0);
     });
 }
 

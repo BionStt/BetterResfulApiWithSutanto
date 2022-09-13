@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
+using WebApi.ModelSampleForResponseSwagger;
 
 namespace WebApi.Controllers;
 
@@ -19,6 +22,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
+    [SwaggerResponseExample(200,typeof(WeatherForecastExample))]
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -29,4 +33,12 @@ public class WeatherForecastController : ControllerBase
         })
         .ToArray();
     }
+
+    [HttpPost]
+    [SwaggerRequestExample(typeof(Person),typeof(PersonExamples))]
+    public Person Post([FromBody] Person person)
+    {
+        return person;
+    }
+   
 }

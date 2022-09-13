@@ -7,3 +7,9 @@ https://www.c-sharpcorner.com/article/implementing-unit-of-work-and-repository-p
 https://dev.to/pdelcogliano/improve-your-web-api-with-swagger-documentation-1j83
 
 https://blog.georgekosmidis.net/swagger-in-asp-net-core-tips-and-tricks.html
+
+https://medium.com/@niteshsinghal85/multiple-request-response-examples-for-swagger-ui-in-asp-net-core-864c0bdc6619
+
+https://developer.trimblemaps.com/engineering-blog/customizing-swagger-responses-for-better-api-documentation/
+
+https://mattfrear.com/2016/01/25/generating-swagger-example-requests-with-swashbuckle/
