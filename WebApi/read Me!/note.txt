@@ -3,3 +3,7 @@
 https://mentormate.com/blog/service-and-repository-layer-interaction-in-c/
 
 https://www.c-sharpcorner.com/article/implementing-unit-of-work-and-repository-pattern-with-dependency-injection-in-n/
+
+https://dev.to/pdelcogliano/improve-your-web-api-with-swagger-documentation-1j83
+
+https://blog.georgekosmidis.net/swagger-in-asp-net-core-tips-and-tricks.html
