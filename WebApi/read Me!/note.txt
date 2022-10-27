@@ -13,3 +13,13 @@ https://medium.com/@niteshsinghal85/multiple-request-response-examples-for-swagg
 https://developer.trimblemaps.com/engineering-blog/customizing-swagger-responses-for-better-api-documentation/
 
 https://mattfrear.com/2016/01/25/generating-swagger-example-requests-with-swashbuckle/
+
+https://mattruma.com/adventures-in-apis-grouping-controllers-in-swagger/
+
+https://www.thecodebuzz.com/change-the-controllers-name-in-swagger-ui-page/
+
+https://jack-vanlightly.com/blog/2017/8/23/api-series-part-2-swagger
+
+https://jack-vanlightly.com/blog/2017/8/5/net-core-web-api-series-introduction
+
+https://jack-vanlightly.com/blog/2017/12/28/api-series-part-7-inter-service-communication-overview

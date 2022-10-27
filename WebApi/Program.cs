@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen(c =>
         {
             Title = "An Example API",
             Version = "v1",
-            Description = "An API to perform restfulApi",
+           // Description = "An API to perform restfulApi",
             TermsOfService = new Uri("https://example.com/terms"),
             Contact = new OpenApiContact
             {
@@ -31,8 +31,19 @@ builder.Services.AddSwaggerGen(c =>
             {
                 Name = "example licence",
                 //Url = new Uri("https://example.com/license"),
-            }
-        });
+            },
+                Description = @"REST services for managing your API ecosystem
+
+                            ## Business Domains and Sub Domains ##
+                            Breakdown your business into domains and sub domains in order to better manage your APIs.
+
+                            ## Tags ##
+                            Create tags to help you classify your APIs on multiple dimensions or link APIs that form cross-cutting business processes
+
+                            ## API Management ##
+                            Manage creation, update and deletion of the APIs in your registry. Classify your APIs by business sub domain and add tags for further classification.",
+
+            });
         // Set the comments path for the Swagger JSON and UI.
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
