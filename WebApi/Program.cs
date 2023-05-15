@@ -1,7 +1,9 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using WebApi.Filter;
 using WebApi.SalesMarketing;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSalesMarketing(builder.Configuration.GetConnectionString("BlazorIdentityConnection")); // perlu diganti connection stringnya
 
 builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<UnhandledExceptionFilterAttribute>();//register services
+    var cacheProfiles = builder.Configuration
+        .GetSection("CacheProfiles")
+        .GetChildren();
+    foreach (var cacheProfile in cacheProfiles)
+    {
+        options.CacheProfiles
+            .Add(cacheProfile.Key,
+                cacheProfile.Get<CacheProfile>());
+    }
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //  builder.Services.AddSwaggerGen();
@@ -60,7 +76,7 @@ builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>

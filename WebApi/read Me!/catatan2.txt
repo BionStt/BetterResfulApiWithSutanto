@@ -1,0 +1,42 @@
+﻿https://itnext.io/installed-asp-net-16702767e7b3
+
+di package manager console 
+dotnet dev-certs https --clean
+dotnet dev-certs https
+dotnet run
+
+
+dotnet new webapi -lang "c#" -au none -o Template --framework "netcoreapp2.2"
+
+--reverse enginerring alias dbscaffolding db
+Scaffold-DbContext 'Data Source=ofadev.id;Initial Catalog=OASE_DEV2;User Id=sa;Password=smo4dm1n;' -OutputDir Models -force Microsoft.EntityFrameworkCore.SqlServer
+
+Scaffold-DbContext 'Data Source=DGLNLO-821684-1;initial catalog=OASE_DEV2;Trusted_Connection=true;' -OutputDir Models -force Microsoft.EntityFrameworkCore.SqlServer
+
+
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate -Context SalesMarketingContext -OutputDir InfrastructureData\Migrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT SalesMarketingContext
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate2 -Context SalesMarketingContext -OutputDir InfrastructureData\Migrations
+
+
+
+untuk kasus ef lama pada monolith net 4 
+Berikut ini adalah dokumentasi source code dan script terkait penambahan column pada bd_userregistration. Proses dilakukan dengan code first (entityframework). 
+backup dulu data sebelum eksekusi hal dibawah ini, perintah dibawah ini untuk mengambil data terkait migration yang sudah pernah di eksekusi sebelum perubahan terkini.
+Get-Migrations
+
+setelah ada perubahan pada class bd_UserRegistration kemudian addmigration di package console manager
+Add-Migration AddColumnToBDUserRegistration
+
+perintah dibawah ini generate script utk di eksekusi di query ssmo (tdk langsung update ke db)
+Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: 202204111540086_AddColumnToBDUserRegistration
+
+Berikut dibawah ini script hari dari Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: 202204111540086_AddColumnToBDUserRegistration. 
+Script ini akan dieksekusi di query sql server(ssmo) (script terlampir didalam folder project oase).
+

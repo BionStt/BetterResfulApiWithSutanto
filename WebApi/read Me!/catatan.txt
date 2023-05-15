@@ -1,0 +1,60 @@
+﻿membuat web API (application programming interface)
+
+belajar google dgn keyword yang tepat.
+banyak baca buku textbook akan membantu banyak keyword sehingga lebih mudah dapat jawaban
+
+
+1. buat projek wep api dengan vs (ASpnet core web API)
+2. coba di run(ctrol+F5) unutk memastikan tahap awal web api sudah berjalan sesuai format awal ms dan memastikan fitur swagger berjalan normal
+3 .karena ini menggunakan konsep Entity framework database first makan dilakukan scaffolding-dbcontext
+4. install library yang dibutuhkan dengan manage nuget package, bisa jg dgn package console manager
+
+    Microsoft.EntityFrameworkCore.Tools
+    Microsoft.EntityFrameworkCore.SQlServer
+    Microsoft.EntityFrameworkCore.Design
+    Microsoft.EntityFrameworkCore.Relational
+
+    set as startup project dgn klik kanan pada project yg sedang dikerjakan. 
+
+    melakukan scaffold-dbcontext dgn package console manager(PMC), berikut perintah nya pada pmc default projectnya diarahkan ke backendforlearningpurpose,
+    kalo ada error misal build failed. kadang project lain perlu di unload dulu.
+
+    Scaffold-DbContext "Server=ofadev.id;Database=OASE_DEV3;User Id=sa;Password=smo4dm1n;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+    utk db local saya pakai dibawah ini.
+    Scaffold-DbContext "Data Source=DGLNLO-821684-1;Initial Catalog=OASE_DEV2;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+    Scaffold-DbContext "Server=ofadev.id ;Database=OASE_DEV2;User Id=sa;Password=smo4dm1n" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+    setelah scaffold-dbcontext maka akan ada models folder yang isi dbcontext(oase_Dev3DbCOntext) dan class lain yang mewakili tabel tabel dalam database.
+
+5. tambahkan code berikut ini pada startup.cs didalam ConfigureServices
+
+  services.AddDbContext<OASE_DEV3Context>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
+    jangan lupa nambahkan referensinya 
+        using Microsoft.EntityFrameworkCore;
+        using BackEndForLearning.Models;
+
+6. comment code berikut pada oase_dev3dbcontext dalam void OnConfiguring
+      if (!optionsBuilder.IsConfigured)
+            {
+    #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=ofadev.id;Database=OASE_DEV3;User Id=sa;Password=smo4dm1n;");
+            }
+
+7. tambahkan connection string pada appsetting.json
+      "ConnectionStrings": {
+    "DefaultConnection": "Server=Server=ofadev.id;Database=OASE_DEV3;User Id=sa;Password=smo4dm1n;"
+  },
+
+8.buat controller EmployeeController, repository
+
+9. untuk projek web aplikasi selalu gunakan metode asynchronous
+
+
+9.
+
+

@@ -130,7 +130,66 @@ namespace WebApi.Controllers
             return Created(nameof(this.CreateDataKonsumenAsync), aa);
         }
 
+        [HttpPost("testerror1")]
+        public async Task<IActionResult> testerror1(string test1)
+        {
 
+            return Problem(
+                "Productiion has no qunatity on hand",
+                $"/sales/products/asasa/availableforsale",
+                404,
+                "cannot set product as available for sale",
+                "http://example.com/problems/no-quantity-on-hand"
+                );
+            //return Ok();
+        }
+
+        [HttpPost("testerror2")]
+        public async Task<IActionResult> testerror2(string test1)
+        {
+            var returnProblem = new ProblemDetails()
+            {
+                Type = "https://example.com/probs/out-of-credit",
+                Title = "yo dont have enought credits",
+                Detail = "your current balanceis 30 , but that costs 50",
+                Instance = "/account/12345/msgs/abc"
+
+            };
+
+            return BadRequest(returnProblem);
+            //return Ok();
+        }
+        
+        [HttpPost("testerror3")]
+        public async Task<IActionResult> testerror3(string test1)
+        {
+            var returnProblem = new OutOfCreditsProblemDetails()
+            {
+                Type = "https://example.com/probs/out-of-credit",
+                Title = "yo dont have enought credits",
+                Detail = "your current balanceis 30 , but that costs 50",
+                Instance = "/account/12345/msgs/abc",
+                Balance = 30.0m,
+                Accounts = {"/account/12345","/account/678676"}
+
+            };
+
+            return BadRequest(returnProblem);
+            //return Ok();
+        }
+    }
+
+    public class OutOfCreditsProblemDetails : ProblemDetails
+    {
+        public OutOfCreditsProblemDetails()
+        {
+            Accounts = new List<string>();
+        }
+
+        public decimal Balance { get; set; }
+        public ICollection<string> Accounts { get; set; }
 
     }
+
+    
 }
